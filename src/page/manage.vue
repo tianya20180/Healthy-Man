@@ -9,7 +9,9 @@
 						<el-menu-item index="userList">用户列表</el-menu-item>
 						<el-menu-item index="orderList">订单列表</el-menu-item>
                         <el-menu-item index="doctorList">医生管理</el-menu-item>
+                        <el-menu-item index="adminList">管理员管理</el-menu-item>
                         <el-menu-item index="authenticationList">认证管理</el-menu-item>
+                        <el-menu-item index="getallarti">文章管理</el-menu-item>
 					</el-submenu>
 
 					<el-submenu index="4">

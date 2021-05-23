@@ -1,4 +1,4 @@
-import fetch from '@/config/fetch'
+import fetch from '@/config/fetch';
 
 /**
  * 登陆
@@ -60,7 +60,7 @@ export const adminDayCount = date => fetch('/statis/admin/' + date + '/count');
  * 管理员列表
  */
 
-export const adminList = data => fetch('/admin/all', data);
+export const adminList = data => fetch('/admin/getAllAdmin', data);
 
 /**
  * 管理员数量
@@ -191,11 +191,15 @@ export const deleteFood = food_id => fetch('/shopping/v2/food/' + food_id, {}, '
 export const getOrderList=(start,end)=>fetch('http://192.144.236.155:8080/admin/getAllOrder',{start,end},'GET')
 
 export const getAdminList = data => fetch('http://192.144.236.155:8080/admin/getAllAdmin');
+export const addAdminList = data => fetch('http://192.144.236.155:8080/admin/add', data, 'POST');
+export const deleteArticle = id => fetch('http://192.144.236.155:8080/admin/deleteArticleById?id='+id);
+export const getArticleList = data => fetch('http://192.144.236.155:8080/admin/getAllArticle');
 export const getUserList = data => fetch('http://192.144.236.155:8080/admin/getAllUser');
 export const getDoctorList = data => fetch('http://192.144.236.155:8080/admin/getAllDoctor');
 export const getAuthenticationList = data => fetch('http://192.144.236.155:8080/admin/getAllAuthentiation');
 export const banUser = id => fetch('http://192.144.236.155:8080/admin/banUser?id='+id);
 export const deleteUser = id => fetch('http://192.144.236.155:8080/admin/deleteUser?id='+id);
+export const deleteAdmin = id => fetch('http://192.144.236.155:8080/admin/delete?id='+id);
 export const banDoctor = id => fetch('http://192.144.236.155:8080/admin/banDoctor?id='+id);
 export const deleteDoctor = id => fetch('http://192.144.236.155:8080/admin/deleteDoctor?id='+id);
 export const deleteOrder = id => fetch('http://192.144.236.155:8080/admin/deleteOrder?id='+id);
