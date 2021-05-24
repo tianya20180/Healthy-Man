@@ -27,8 +27,7 @@
         </el-table-column>
         <el-table-column prop="createTime" label="注册日期" width="220">
         </el-table-column>
-        <el-table-column prop="address" label="地址" width="180">
-        </el-table-column>
+     
         <el-table-column prop="phone" label="手机"> </el-table-column>
         <el-table-column>
           <template slot-scope="scope">

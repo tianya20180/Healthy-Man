@@ -7,8 +7,6 @@
         </el-table-column>
         <el-table-column prop="description" label="简述" >
         </el-table-column>
-        <el-table-column prop="content" label="内容" >
-        </el-table-column>
         <el-table-column prop="createdatetime" label="发布时间" width="220">
         </el-table-column>
         <el-table-column prop="viewCount" label="浏览量" >
