@@ -12,6 +12,7 @@
                         <el-menu-item index="adminList">管理员管理</el-menu-item>
                         <el-menu-item index="authenticationList">认证管理</el-menu-item>
                         <el-menu-item index="getallarti">文章管理</el-menu-item>
+                         <el-menu-item index="categoryList">类别管理</el-menu-item>
 					</el-submenu>
 
 					<el-submenu index="4">

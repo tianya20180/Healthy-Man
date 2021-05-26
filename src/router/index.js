@@ -47,7 +47,8 @@ const sendMessage = (r) =>
     require.ensure([], () => r(require("@/page/sendMessage")), "sendMessage");
 const explain = (r) =>
     require.ensure([], () => r(require("@/page/explain")), "explain");
-
+const categoryList = (r) =>
+    require.ensure([], () => r(require("@/page/categoryList")), "categoryList");
 const routes = [
     {
         path: "/",
@@ -105,6 +106,16 @@ const routes = [
             },
             {
                 path: "/sendMessage",
+                component: sendMessage,
+                meta: ["设置", "发送通知"],
+            },
+            {
+                path: "/categoryList",
+                component: categoryList,
+                meta: ["设置", "发送通知"],
+            },
+            {
+                path: "/",
                 component: sendMessage,
                 meta: ["设置", "发送通知"],
             },

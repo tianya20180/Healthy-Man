@@ -102,7 +102,6 @@ export const getCategory = restaurant_id => fetch('/shopping/getcategory/' + res
  * 添加食品种类
  */
 
-export const addCategory = data => fetch('/shopping/addcategory', data, 'POST');
 
 
 /**
@@ -205,6 +204,9 @@ export const deleteDoctor = id => fetch('http://192.144.236.155:8080/admin/delet
 export const deleteOrder = id => fetch('http://192.144.236.155:8080/admin/deleteOrder?id='+id);
 export const agree = (doctorId,authenticationId) => fetch('http://192.144.236.155:8080/admin/authenticationAgree?doctorId=' + doctorId+'&authenticationId='+authenticationId);
 export const disagree = (doctorId,authenticationId) => fetch('http://192.144.236.155:8080/admin/authenticationReject/doctorId=' + doctorId+'&authenticationId='+authenticationId);
+export const getAllCategory = () => fetch('http://localhost:8080/admin/getAllCategory');
+export const addCategory = (data) => fetch('http://localhost:8080/category/add',data,'POST');
+export const deleteCategory = (id) => fetch('http://localhost:8080/category/delete?id='+id);
 
 /**
  * 获取用户数量
