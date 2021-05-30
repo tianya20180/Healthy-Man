@@ -69,15 +69,16 @@ export default {
   },
   methods: {
     async initData() {
-      this.getArticle();
+      this.getArticle(this.currentPage,this.limit);
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
+      this.getArticle(this.currentPage,this.limit);
     },
     handleCurrentChange(val) {
       this.currentPage = val;
       this.offset = (val - 1) * this.limit;
-      this.getArticle();
+      this.getArticle(this.currentPage,this.limit);
     },
     async _deleteArticle(row) {
       // console.log(row);
@@ -95,8 +96,8 @@ export default {
         this.tableData = t;
       }
     },
-    async getArticle() {
-      const res = await getArticleList();
+    async getArticle(currentPage,size) {
+      const res = await getArticleList(currentPage,size);
       console.log(res);
       if (res.status == 0) {
         this.tableData = [];

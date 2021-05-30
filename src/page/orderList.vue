@@ -105,9 +105,9 @@
                 this.end =this.$moment(this.end).format("YYYY-MM-DD");
                 console.log(this.start);
                 console.log(this.end);
-                let res=await getOrderList(this.start,this.end);
-
-                const Orders = res.data;
+                let res=await getOrderList(this.start,this.end,this.currentPage,this.limit);
+                this.count=res.data.total;
+                const Orders = res.data.records;
                 this.tableData = [];
                 Orders.forEach((item, index) => {
                     const tableData = {};
@@ -142,16 +142,8 @@
 
             async initData(){
                 try{
-                    /*
-                    const countData = await getOrderCount({restaurant_id: this.restaurant_id});
-                    if (countData.status == 1) {
-                        this.count = countData.count;
-                    }else{
-                        throw new Error('获取数据失败');
-                    }*/
-                    this.count=10;
 
-                   // this.getOrders(start,end);
+                    this.getOrders(start,end,this.currentPage,this.limit);
                 }catch(err){
                     console.log('获取数据失败', err);
                 }
@@ -162,27 +154,29 @@
             handleCurrentChange(val) {
                 this.currentPage = val;
                 this.offset = (val - 1)*this.limit;
-                //this.getOrders(start,end)
+                this.start =this.$moment(this.start).format("YYYY-MM-DD");
+                this.end =this.$moment(this.end).format("YYYY-MM-DD");
+                this.getOrders(this.start,this.end,this.currentPage,this.limit)
             },
-            async getOrders(start,end){
-                let res=await getOrderList(start,end);
+            async getOrders(start,end,current,size){
+                let res=await getOrderList(start,end,current,size);
                 console.log(res);
-                const Orders = res.data;
+                const Orders = res.data.records;
                 this.tableData = [];
+                this.count=res.data.total;
                 console.log(Orders);
 
-                if(Orders==null||Orders.length==0){
-                    alert("该日期下无数据");
-                }
                 Orders.forEach((item, index) => {
                     const tableData = {};
-                    tableData.userId = item.userId;
-                    tableData.doctorId = item.doctorId;
-                    tableData.createTime = item.createTime;
-                    tableData.orderId = item.orderId;
-                    tableData.money = item.money;
-                    tableData.status = item.status;
-                    tableData.id= item.id;
+                   tableData.userId = item.userId;
+                   tableData.doctorId = item.doctorId;
+                   tableData.createTime = item.createTime;
+                   tableData.orderId = item.orderId;
+                   tableData.money = item.money;
+                   tableData.status = item.status;
+                   tableData.id= item.id;
+                   tableData.userName= item.userName;
+                   tableData.doctorName= item.doctorName;
                     this.tableData.push(tableData);
                 })
             },

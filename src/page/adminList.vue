@@ -121,11 +121,11 @@ export default {
       }
     },
     async getAdmin() {
-      const res = await getAdminList();
+      const res = await getAdminList(this.currentPage,this.limit);
       console.log(res);
       if (res.status == 0) {
         this.tableData = [];
-        res.data.forEach((item) => {
+        res.data.records.forEach((item) => {
           const tableItem = {
             createTime: item.createTime,
             userName: item.userName,
@@ -134,7 +134,7 @@ export default {
             id: item.id,
           };
           this.tableData.push(tableItem);
-          this.count = this.tableData.length;
+          this.count = this.tableData.total;
         });
       }
     },

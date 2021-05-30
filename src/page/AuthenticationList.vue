@@ -139,7 +139,7 @@
                         throw new Error('获取数据失败');
                     }*/
                     this.count=5;
-                    this.getUsers();
+                    this.getUsers(this.currentPage,this.limit);
                 }catch(err){
                     console.log('获取数据失败', err);
                 }
@@ -150,11 +150,11 @@
             handleCurrentChange(val) {
                 this.currentPage = val;
                 this.offset = (val - 1)*this.limit;
-                this.getUsers()
+                this.getUsers(this.currentPage,this.limit)
             },
             hanscopdleSizeChange(){},
-            async getUsers(){
-                let res=await getAuthenticationList();
+            async getUsers(page,size){
+                let res=await getAuthenticationList(page,size);
                 const Users = res.data;
                 console.log(Users);
                 this.tableData = [];

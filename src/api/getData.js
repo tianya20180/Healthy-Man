@@ -187,15 +187,15 @@ export const deleteFood = food_id => fetch('/shopping/v2/food/' + food_id, {}, '
 /**
  * 获取用户列表
  */
-export const getOrderList=(start,end)=>fetch('http://192.144.236.155:8080/admin/getAllOrder',{start,end},'GET')
+export const getOrderList=(start,end,current,size)=>fetch('http://192.144.236.155:8080/admin/getAllOrder',{start,end,current,size},'GET')
 
-export const getAdminList = data => fetch('http://192.144.236.155:8080/admin/getAllAdmin');
+export const getAdminList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllAdmin',{current,size});
 export const addAdminList = data => fetch('http://192.144.236.155:8080/admin/add', data, 'POST');
 export const deleteArticle = id => fetch('http://192.144.236.155:8080/admin/deleteArticleById?id='+id);
-export const getArticleList = data => fetch('http://192.144.236.155:8080/admin/getAllArticle');
-export const getUserList = data => fetch('http://192.144.236.155:8080/admin/getAllUser');
-export const getDoctorList = data => fetch('http://192.144.236.155:8080/admin/getAllDoctor');
-export const getAuthenticationList = data => fetch('http://192.144.236.155:8080/admin/getAllAuthentiation');
+export const getArticleList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllArticle',{current,size});
+export const getUserList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllUser',{current,size});
+export const getDoctorList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllDoctor',{current,size});
+export const getAuthenticationList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllAuthentiation',{current,size});
 export const banUser = id => fetch('http://192.144.236.155:8080/admin/banUser?id='+id);
 export const deleteUser = id => fetch('http://192.144.236.155:8080/admin/deleteUser?id='+id);
 export const deleteAdmin = id => fetch('http://192.144.236.155:8080/admin/delete?id='+id);
@@ -204,7 +204,7 @@ export const deleteDoctor = id => fetch('http://192.144.236.155:8080/admin/delet
 export const deleteOrder = id => fetch('http://192.144.236.155:8080/admin/deleteOrder?id='+id);
 export const agree = (doctorId,authenticationId) => fetch('http://192.144.236.155:8080/admin/authenticationAgree?doctorId=' + doctorId+'&authenticationId='+authenticationId);
 export const disagree = (doctorId,authenticationId) => fetch('http://192.144.236.155:8080/admin/authenticationReject/doctorId=' + doctorId+'&authenticationId='+authenticationId);
-export const getAllCategory = () => fetch('http://192.144.236.155:8080/admin/getAllCategory');
+export const getAllCategory = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllCategory',{current,size});
 export const addCategory = (data) => fetch('http://192.144.236.155:8080/category/add',data,'POST');
 export const deleteCategory = (id) => fetch('http://192.144.236.155:8080/category/delete?id='+id);
 

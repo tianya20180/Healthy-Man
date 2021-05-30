@@ -138,7 +138,7 @@
                    alert("删除成功");
                    this.getUsers();
                }
-               
+
            },
            async delete(row){
                console.log("delete");
@@ -166,8 +166,8 @@
                 }catch(err){
                     console.log('获取数据失败', err);
                 }*/
-                this.getUsers();
-                this.count=5;
+                this.getUsers(this.currentPage,this.limit);
+
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
@@ -175,11 +175,11 @@
             handleCurrentChange(val) {
                 this.currentPage = val;
                 this.offset = (val - 1)*this.limit;
-                this.getUsers()
+                this.getUsers(this.currentPage,this.limit)
             },
-            async getUsers(){
-                let res=await getAllCategory();
-                const Users = res.data;
+            async getUsers(page,size){
+                let res=await getAllCategory(page,size);
+                const Users = res.data.records;
                 console.log(res);
                 this.tableData = [];
                 Users.forEach(item => {

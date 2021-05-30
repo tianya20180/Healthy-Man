@@ -15,21 +15,20 @@
                          <el-menu-item index="categoryList">类别管理</el-menu-item>
 					</el-submenu>
 
-					<el-submenu index="4">
-						<template slot="title"><i class="el-icon-star-on"></i>图表</template>
-						<el-menu-item index="visitor">用户分布</el-menu-item>
-						<!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
-					</el-submenu>
 
-					<el-submenu index="6">
-						<template slot="title"><i class="el-icon-setting"></i>设置</template>
-						<el-menu-item index="adminSet">管理员设置</el-menu-item>
-						<!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
-					</el-submenu>
+
+
 					<el-submenu index="7">
 						<template slot="title"><i class="el-icon-warning"></i>说明</template>
 						<el-menu-item index="explain">说明</el-menu-item>
 					</el-submenu>
+                    
+                    <el-submenu index="2">
+                    	<template slot="title"><i class="el-icon-document"></i>退出登录</template>
+                    	<el-menu-item index="login">退出</el-menu-item>
+                    	
+                    </el-submenu>
+                    
 				</el-menu>
 			</el-col>
 			<el-col :span="20" style="height: 100%;overflow: auto;">

@@ -140,7 +140,7 @@
                 }catch(err){
                     console.log('获取数据失败', err);
                 }*/
-                this.getUsers();
+                this.getUsers(this.currentPage,this.limit);
                 this.count=5;
             },
             handleSizeChange(val) {
@@ -149,11 +149,11 @@
             handleCurrentChange(val) {
                 this.currentPage = val;
                 this.offset = (val - 1)*this.limit;
-                this.getUsers()
+                this.getUsers(this.currentPage,this.limit)
             },
-            async getUsers(){
-                let res=await getDoctorList();
-                const Users = res.data;
+            async getUsers(currentPage,limit){
+                let res=await getDoctorList(currentPage,limit);
+                const Users = res.data.records;
                 console.log(res);
                 this.tableData = [];
                 Users.forEach(item => {
