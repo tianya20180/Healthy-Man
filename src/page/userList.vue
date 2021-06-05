@@ -21,7 +21,8 @@
         </el-table-column>
         <el-table-column>
           <template slot-scope="scope" v-for="item in tableData">
-            <el-button type="text" @click="banUser(scope.row)">封禁</el-button>
+            <el-button type="text" @click="banUser(scope.row)" v-if="scope.row.status==1">封禁</el-button>
+            <el-button type="text" @click="releaseUser(scope.row)" v-else>解除封禁</el-button>
             <el-button type="text" @click="deleteUser(scope.row)"
               >删除</el-button
             >
@@ -45,7 +46,7 @@
 
 <script>
 import headTop from "../components/headTop";
-import { getUserList, getUserCount, banUser, deleteUser } from "@/api/getData";
+import { getUserList, getUserCount, banUser, deleteUser,releaseUser } from "@/api/getData";
 export default {
   data() {
     return {
@@ -64,13 +65,27 @@ export default {
     this.initData();
   },
   methods: {
+
+      async releaseUser(row){
+          console.log(row);
+          let id = row.id;
+          let res = await releaseUser(id);
+          if (res.status == 0) {
+            alert("解除成功");
+            this.getUsers(this.currentPage,this.limit);
+
+          } else {
+            alert("解除失败");
+          }
+      },
     async banUser(row) {
       console.log(row);
       let id = row.id;
       let res = await banUser(id);
       if (res.status == 0) {
         alert("封禁成功");
-        this.getUsers();
+        this.getUsers(this.currentPage,this.limit);
+
       } else {
         alert("封禁失败");
       }
@@ -79,6 +94,8 @@ export default {
       let id = row.id;
       let res = await deleteUser(id);
       if (res.status == 0) {
+          this.getUsers(this.currentPage,this.limit);
+
         alert("删除成功");
       } else {
         alert("删除失败");

@@ -136,7 +136,7 @@
                let res =await deleteCategory(id);
                if(res.status==0){
                    alert("删除成功");
-                   this.getUsers();
+                   this.getUsers(this.currentPage,this.limit);
                }
 
            },
@@ -145,6 +145,8 @@
                let res =await deleteCategory(row.id);
                if(res.status==0){
                    alert("删除成功");
+                   this.getUsers(this.currentPage,this.limit);
+                   
                }
             },
             addCategory(){
@@ -180,6 +182,7 @@
             async getUsers(page,size){
                 let res=await getAllCategory(page,size);
                 const Users = res.data.records;
+                this.count=res.data.total;
                 console.log(res);
                 this.tableData = [];
                 Users.forEach(item => {

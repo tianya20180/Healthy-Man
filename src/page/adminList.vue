@@ -3,9 +3,9 @@
     <head-top> </head-top>
     <div class="add">
       <el-button @click="dialogFormVisible = true">新增管理员</el-button>
-      <el-dialog title="添加管理员" :visible.sync="dialogFormVisible">
+      <el-dialog title="添加管理员" :visible.sync="dialogFormVisible" >
         <el-form :model="null">
-          <el-form-item label="管理员id">
+          <el-form-item label="管理员账户">
             <el-input v-model="userName"></el-input>
           </el-form-item>
           <el-form-item label="管理员密码">
@@ -23,11 +23,11 @@
     </div>
     <div class="table_container">
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="userName" label="姓名" width="180">
+        <el-table-column prop="userName" label="账户名" width="180">
         </el-table-column>
         <el-table-column prop="createTime" label="注册日期" width="220">
         </el-table-column>
-     
+
         <el-table-column prop="phone" label="手机"> </el-table-column>
         <el-table-column>
           <template slot-scope="scope">

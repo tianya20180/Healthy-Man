@@ -62,9 +62,6 @@
 
             </el-table>
 
-              <el-dialog title="图片" :visible.sync="disable" center :append-to-body='true' :lock-scroll="false" width="30%">
-                    <img :src="photo" style="width: 500px; height: 500px;"/>
-              </el-dialog>
 
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -102,10 +99,7 @@
             this.initData();
         },
         methods: {
-            show(photo){
-              this.photo = photo;
-              this.disable=true;
-            },
+
             cancel(){
               this.disable=false;
             },
@@ -138,7 +132,7 @@
                     }else{
                         throw new Error('获取数据失败');
                     }*/
-                    this.count=5;
+                    
                     this.getUsers(this.currentPage,this.limit);
                 }catch(err){
                     console.log('获取数据失败', err);
@@ -155,7 +149,8 @@
             hanscopdleSizeChange(){},
             async getUsers(page,size){
                 let res=await getAuthenticationList(page,size);
-                const Users = res.data;
+                const Users = res.data.records;
+                this.count=res.data.total;
                 console.log(Users);
                 this.tableData = [];
                 Users.forEach(item => {

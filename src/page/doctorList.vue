@@ -36,11 +36,7 @@
                   label="问诊量"
                   width="220">
                 </el-table-column>
-                <el-table-column
-                  property="money"
-                  label="金额"
-                  width="220">
-                </el-table-column>
+
                 <el-table-column
                   property="workYears"
                   label="工作时间"
@@ -67,6 +63,7 @@
                 </el-table-column>
               <el-table-column>
                    <template slot-scope="scope"  v-for="item in tableData">
+                        <el-button type="text" @click="releaseDoctor(scope.row)" v-if="scope.row.status==2">解除封禁</el-button>
                       <el-button type="text"  @click="banDoctor(scope.row)" >封禁</el-button>
                       <el-button type="text"  @click="deleteDoctor(scope.row)" >删除</el-button>
                    </template>
@@ -88,7 +85,7 @@
 
 <script>
     import headTop from '../components/headTop'
-    import {getDoctorList, getUserCount,banDoctor,deleteDoctor} from '@/api/getData'
+    import {getDoctorList, getUserCount,banDoctor,deleteDoctor,releaseDoctor} from '@/api/getData'
     export default {
         data(){
             return {
@@ -107,6 +104,18 @@
             this.initData();
         },
         methods: {
+
+            async releaseDoctor(row){
+                let id=row.id;
+                let res=await releaseDoctor(id);
+                if(res.status==0){
+                    alert("解除成功");
+                }else{
+                    alert("解除失败");
+                }
+                this.getUsers(this.currentPage,this.limit);
+                
+            },
             async banDoctor(row){
                 let id=row.id;
                 let res=await banDoctor(id);
@@ -115,6 +124,8 @@
                 }else{
                     alert("封禁失败");
                 }
+                this.getUsers(this.currentPage,this.limit);
+                
             },
            async deleteDoctor(row){
                 let id=row.id;
@@ -124,6 +135,8 @@
                 }else{
                     alert("删除失败");
                 }
+                this.getUsers(this.currentPage,this.limit);
+                
             },
             async initData(){
                 /*
@@ -141,7 +154,7 @@
                     console.log('获取数据失败', err);
                 }*/
                 this.getUsers(this.currentPage,this.limit);
-                this.count=5;
+
             },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
@@ -170,6 +183,7 @@
                     tableData.categoryName= item.categoryName;
                     this.tableData.push(tableData);
                 })
+                this.count=res.data.total;
             }
         },
     }

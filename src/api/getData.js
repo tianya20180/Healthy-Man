@@ -197,9 +197,13 @@ export const getUserList = (current,size) => fetch('http://192.144.236.155:8080/
 export const getDoctorList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllDoctor',{current,size});
 export const getAuthenticationList = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllAuthentiation',{current,size});
 export const banUser = id => fetch('http://192.144.236.155:8080/admin/banUser?id='+id);
+export const releaseUser = id => fetch('http://192.144.236.155:8080/admin/releaseUser?id='+id);
+
 export const deleteUser = id => fetch('http://192.144.236.155:8080/admin/deleteUser?id='+id);
 export const deleteAdmin = id => fetch('http://192.144.236.155:8080/admin/delete?id='+id);
 export const banDoctor = id => fetch('http://192.144.236.155:8080/admin/banDoctor?id='+id);
+export const releaseDoctor = id => fetch('http://192.144.236.155:8080/admin/releaseDoctor?id='+id);
+
 export const deleteDoctor = id => fetch('http://192.144.236.155:8080/admin/deleteDoctor?id='+id);
 export const deleteOrder = id => fetch('http://192.144.236.155:8080/admin/deleteOrder?id='+id);
 export const agree = (doctorId,authenticationId) => fetch('http://192.144.236.155:8080/admin/authenticationAgree?doctorId=' + doctorId+'&authenticationId='+authenticationId);
@@ -207,6 +211,7 @@ export const disagree = (doctorId,authenticationId) => fetch('http://192.144.236
 export const getAllCategory = (current,size) => fetch('http://192.144.236.155:8080/admin/getAllCategory',{current,size});
 export const addCategory = (data) => fetch('http://192.144.236.155:8080/category/add',data,'POST');
 export const deleteCategory = (id) => fetch('http://192.144.236.155:8080/category/delete?id='+id);
+export const getdata = () => fetch('http://192.144.236.155:8080/admin/getData');
 
 /**
  * 获取用户数量
