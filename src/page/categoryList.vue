@@ -45,7 +45,7 @@
                   width="220">
                   <template slot-scope="scope">
                       <p v-if="scope.row.type==0">医生科室</p>
-                      <p v-if="scope.row.type==1">文章分类</p>
+                      <p v-else>文章分类</p>
                   </template>
                 </el-table-column>
 
