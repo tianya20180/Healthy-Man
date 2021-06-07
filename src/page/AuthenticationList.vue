@@ -61,7 +61,9 @@
                  </el-table-column>
 
             </el-table>
-
+              <el-dialog title="图片" :visible.sync="disable" center :append-to-body='true' :lock-scroll="false" width="30%">
+                    <img :src="photo" style="width: 500px; height: 500px;"/>
+              </el-dialog>
 
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -89,7 +91,8 @@
                 limit: 20,
                 count: 0,
                 currentPage: 1,
-                disable:false
+                disable:false,
+                photo:''
             }
         },
     	components: {
@@ -99,7 +102,10 @@
             this.initData();
         },
         methods: {
-
+            show(data){
+              this.disable=true;
+              this.photo=data;
+            },
             cancel(){
               this.disable=false;
             },
@@ -132,7 +138,7 @@
                     }else{
                         throw new Error('获取数据失败');
                     }*/
-                    
+
                     this.getUsers(this.currentPage,this.limit);
                 }catch(err){
                     console.log('获取数据失败', err);
@@ -165,8 +171,8 @@
                    tableData.status = item.status;
                    tableData.money=item.money;
                    tableData.id=item.id;
-                   tableData.doctorPhoto='data:image/jpeg;base64,'+item.doctorPhoto;
-                   tableData.cardPhoto='data:image/jpeg;base64,'+item.cardPhoto;
+                   tableData.doctorPhoto=item.doctorPhoto;
+                   tableData.cardPhoto=item.cardPhoto;
                    tableData.category=item.category;
                    tableData.categoryName=item.categoryName;
                    tableData.doctorName=item.doctorName;
