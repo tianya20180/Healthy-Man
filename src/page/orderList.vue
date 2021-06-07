@@ -71,7 +71,7 @@
 
 <script>
     import headTop from '../components/headTop'
-    import {getOrderList, getOrderCount, getResturantDetail, getUserInfo, getAddressById,deleteOrder} from '@/api/getData'
+    import {getOrderList, getOrderCount,  getUserInfo, getAddressById,deleteOrder} from '@/api/getData'
     export default {
         data(){
             return {
@@ -182,7 +182,7 @@
             },
             async expand(row, status){
             	if (status) {
-            		const restaurant = await getResturantDetail(row.restaurant_id);
+        
 	            	const userInfo = await getUserInfo(row.user_id);
 	            	const addressInfo = await getAddressById(row.address_id);
 
